@@ -1,0 +1,28 @@
+# config.tpl.yaml
+server:
+  port: "__GO_PORT__"
+  worker_num: __GO_WORKER_NUM__
+
+redis:
+  addr: "__REDIS_HOST__:__REDIS_PORT__"
+  password: "__REDIS_PASS__"
+  db: __REDIS_DB__
+  task_key: "__REDIS_KEY_TASK__"
+  event_key: "__REDIS_KEY_EVENT__"
+  cron_key: "__REDIS_KEY_CRON__"
+  admin_log_key: "__REDIS_KEY_ADMIN_LOG__"
+  user_log_key: "__REDIS_KEY_USER_LOG__"
+  yii_log_key: "__REDIS_KEY_YII_LOG__"
+
+database:
+  dsn: "__DB_USER__:__DB_PASS__@tcp(__DB_HOST__:__DB_PORT__)/__DB_NAME__?charset=utf8mb4&parseTime=True&loc=Local"
+  dbName: "__DB_NAME__"
+
+yii:
+  fpm_network: "__PHP_FPM_NETWORK__"
+  fpm_addr: "__PHP_FPM_ADDR__"
+  # 这里使用特殊的占位符，将在脚本中动态计算完整路径
+  entry_file: "__PROJECT_ROOT__/web/index.php"
+
+log:
+  output_dir: "__PROJECT_ROOT__/runtime/logs"

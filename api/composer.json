@@ -1,0 +1,137 @@
+{
+  "name": "yiisoft/yii2-app-basic",
+  "description": "Yii 2 Basic Project Template",
+  "keywords": [
+    "yii2",
+    "framework",
+    "basic",
+    "project template"
+  ],
+  "homepage": "http://www.yiiframework.com/",
+  "type": "project",
+  "license": "CPAL-1.0",
+  "support": {
+    "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+    "forum": "http://www.yiiframework.com/forum/",
+    "wiki": "http://www.yiiframework.com/wiki/",
+    "irc": "irc://irc.freenode.net/yii",
+    "source": "https://github.com/yiisoft/yii2"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=7.2",
+    "yiisoft/yii2": "^2.0.53",
+    "yiisoft/yii2-bootstrap": "~2.0.0",
+    "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+    "vlucas/phpdotenv": "^5.1@dev",
+    "yiisoft/yii2-queue": "^2.0@dev",
+    "kosinix/grafika": "*",
+    "aliyuncs/oss-sdk-php": "*",
+    "qcloud/cos-sdk-v5": "*",
+    "qiniu/php-sdk": "*",
+    "finecho/logistics": "*",
+    "endroid/qr-code": "^3.0",
+    "yiisoft/yii2-httpclient": "*",
+    "ext-zip": "*",
+    "ext-pdo": "*",
+    "phpoffice/phpspreadsheet": "^1.19",
+    "yiisoft/yii2-elasticsearch": "~2.1.0",
+    "textalk/websocket": "*",
+    "pda/pheanstalk": "v3.2.1",
+    "imagine/imagine": "^1.1",
+    "ext-imagick": "*",
+    "react/socket": "^1.1",
+    "nesbot/carbon": "^2.0",
+    "huifurepo/dg-php-sdk": "*",
+    "wechatpay/wechatpay": "*",
+    "ixudra/curl": "*",
+    "php-ffmpeg/php-ffmpeg": "*",
+    "alipaysdk/easysdk": "^2.2",
+    "w7corp/easywechat": "^6.16",
+    "setasign/fpdi": "^2.6",
+    "tecnickcom/tcpdf": "^6.11"
+  },
+  "require-dev": {
+    "yiisoft/yii2-debug": "~2.1.0",
+    "yiisoft/yii2-gii": "*",
+    "yiisoft/yii2-faker": "~2.0.0",
+    "codeception/codeception": "^5.0",
+    "codeception/verify": "^2.0 || ^3.0",
+    "codeception/specify": "^2.0",
+    "symfony/browser-kit": "^5.4 || ^6.0",
+    "codeception/module-filesystem": "^3.0",
+    "codeception/module-yii2": "^1.1.8",
+    "codeception/module-asserts": "^3.0",
+    "yiisoft/yii2-redis": "^2.0@dev",
+    "curl/curl": "*",
+    "overtrue/easy-sms": "^3.1",
+    "insolita/yii2-migration-generator": "~3.1",
+    "phpstan/phpstan": "^2.2"
+  },
+  "config": {
+    "process-timeout": 1800,
+    "fxp-asset": {
+      "enabled": false
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "easywechat-composer/easywechat-composer": true
+    },
+    "platform": {
+      "php": "8.2"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "yii\\composer\\Installer::postInstall"
+    ],
+    "post-create-project-cmd": [
+      "yii\\composer\\Installer::postCreateProject",
+      "yii\\composer\\Installer::postInstall"
+    ],
+    "phpstan": "phpstan analyse --memory-limit=1G",
+    "test": "phpunit --testsuite unit"
+  },
+  "scripts-descriptions": {
+    "phpstan": "本地静态分析：composer phpstan -- <文件或目录>（如 composer phpstan -- helpers/Safe.php）",
+    "test": "跑单元测试 unit suite（126 个纯逻辑测试，不连库）"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\core\\": [
+        "core/"
+      ]
+    },
+    "files": [
+      "functions.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "yii\\composer\\Installer::postCreateProject": {
+      "setPermission": [
+        {
+          "runtime": "0777",
+          "web/assets": "0777",
+          "yii": "0755"
+        }
+      ]
+    },
+    "yii\\composer\\Installer::postInstall": {
+      "generateCookieValidationKey": [
+        "config/web.php"
+      ]
+    }
+  },
+  "repositories": {
+    "0": {
+      "type": "composer",
+      "url": "https://asset-packagist.cn"
+    }
+  }
+}

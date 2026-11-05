@@ -1,0 +1,38 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Yii console bootstrap file.
+ *
+ * @link https://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license https://www.yiiframework.com/license/
+ */
+require __DIR__ . '/vendor/autoload.php';
+
+// ==================== [ vlucas/phpdotenv ] ====================
+// 1. 加载 .env 文件
+// createImmutable 指明 .env 文件在当前目录 (即项目根目录, __DIR__)
+try {
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    // 使用 safeLoad()，如果 .env 文件不存在 (例如在生产环境)，它不会报错
+    $dotenv->safeLoad();
+} catch (Exception $e) {
+    // 在Yii应用加载前，只能使用原生PHP函数记录错误
+    error_log("Could not load .env file: " . $e->getMessage());
+}
+// =============================================================
+
+
+// ==================== [ 定义 Yii_DEBUG ] ====================
+// 2. 从 .env 文件中读取 YII_DEBUG 和 YII_ENV
+// '??' 是空合并运算符，如果 .env 中没有定义，则使用默认值
+defined('YII_DEBUG') or define('YII_DEBUG', $_ENV['YII_DEBUG'] ?? false);
+defined('YII_ENV') or define('YII_ENV', $_ENV['YII_ENV'] ?? 'prod');
+// =============================================================
+
+
+// 3. 在 .env 加载完毕后，才加载 Yii 的配置
+$config = require __DIR__ . '/config/console.php';
+$application = new app\core\ConsoleApplication($config);
+$exitCode = $application->run();
+exit($exitCode);

@@ -1,0 +1,20 @@
+{
+  "clients": [
+    "h5",
+    "app"
+  ],
+  "edition": "community-source",
+  "license": "CPAL-1.0",
+  "plugins": [
+    "article",
+    "clerk",
+    "distribution",
+    "marketing",
+    "mch",
+    "withdraw"
+  ],
+  "rules_sha256": "596f8373edb589fc9168cd8ece70965709cfe89c8eed6d4dc076622989c121ca",
+  "scheduler": null,
+  "source_commit": "b214dc61dbe798e6c31ee5a0fb796f6f461bff63",
+  "status": "local-candidate"
+}

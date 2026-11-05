@@ -1,0 +1,218 @@
+{
+    "name" : "Craddl",
+    "mall_id" : "1",
+    "appid" : "",
+    "description" : "",
+    "versionName" : "1109",
+    "versionCode" : 1109,
+    "transformPx" : false,
+    /* 5+App特有相关 */
+    "app-plus" : {
+        "usingComponents" : true,
+        "nvueCompiler" : "uni-app",
+        "compilerVersion" : 3,
+        "splashscreen" : {
+            "alwaysShowBeforeRender" : true,
+            "waiting" : true,
+            "autoclose" : true,
+            "delay" : 0
+        },
+        /* 模块配置 */
+        "modules" : {
+            "Geolocation" : {},
+            "Maps" : {},
+            "Barcode" : {},
+            "Camera" : {},
+            "Payment" : {},
+            "Share" : {}
+        },
+        /* 应用发布信息 */
+        "distribute" : {
+            /* android打包配置 */
+            "android" : {
+                "permissions" : [
+                    "<uses-feature android:name=\"android.hardware.camera\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+                    "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+                ],
+                "targetSdkVersion" : 30
+            },
+            /* ios打包配置 */
+            "ios" : {
+                "privacyDescription" : {
+                    "NSPhotoLibraryUsageDescription" : "为了让您能从手机相册中选择图片（如头像、商品图片等）并上传至App，我们需要访问您的照片库",
+                    "NSPhotoLibraryAddUsageDescription" : "当您保存App内的图片（如生成的海报、聊天图片等）时，我们需要获取照片库写入权限，将图片保存到您的手机相册",
+                    "NSCameraUsageDescription" : "当您需要拍摄图片（如现场拍摄商品、拍摄身份证用于认证等）并上传至App时，我们需要访问您的摄像头",
+                    "NSLocationWhenInUseUsageDescription" : "为了向您展示附近的门店、推荐周边的优惠活动，以及计算您与目的地的距离，我们需要在您使用App时获取您的位置信息",
+                    "NSLocationAlwaysAndWhenInUseUsageDescription" : "为了在您使用或退出App后，仍能持续为您提供实时导航路线、推送附近的实时交通信息，我们需要始终获取您的位置信息",
+                    "NSLocationAlwaysUsageDescription" : "为了在您使用或退出App后，仍能持续为您提供实时导航路线，我们需要始终获取您的位置信息"
+                },
+                "idfa" : false,
+                "dSYMs" : false
+            },
+            /* SDK配置 */
+            "sdkConfigs" : {
+                "payment" : {
+                    "weixin" : {
+                        "__platform__" : [ "android" ],
+                        "appid" : "",
+                        "UniversalLinks" : ""
+                    }
+                },
+                "share" : {
+                    "weixin" : {
+                        "appid" : "",
+                        "UniversalLinks" : ""
+                    }
+                },
+                "geolocation" : {
+                    "amap" : {
+                        "name" : "amap_15329873333BkVlox5zn",
+                        "__platform__" : [ "android" ],
+                        "appkey_ios" : "",
+                        "appkey_android" : ""
+                    }
+                },
+                "maps" : {
+                    "amap" : {
+                        "name" : "amap_15329873333BkVlox5zn",
+                        "appkey_ios" : "",
+                        "appkey_android" : ""
+                    }
+                }
+            },
+            "splashscreen" : {
+                "useOriginalMsgbox" : true
+            },
+            "icons" : {
+                "android" : {
+                    "hdpi" : "static/brand/icons/72x72.png",
+                    "xhdpi" : "static/brand/icons/96x96.png",
+                    "xxhdpi" : "static/brand/icons/144x144.png",
+                    "xxxhdpi" : "static/brand/icons/192x192.png"
+                },
+                "ios" : {
+                    "appstore" : "static/brand/icons/1024x1024.png",
+                    "ipad" : {
+                        "app" : "static/brand/icons/76x76.png",
+                        "app@2x" : "static/brand/icons/152x152.png",
+                        "notification" : "static/brand/icons/20x20.png",
+                        "notification@2x" : "static/brand/icons/40x40.png",
+                        "proapp@2x" : "static/brand/icons/167x167.png",
+                        "settings" : "static/brand/icons/29x29.png",
+                        "settings@2x" : "static/brand/icons/58x58.png",
+                        "spotlight" : "static/brand/icons/40x40.png",
+                        "spotlight@2x" : "static/brand/icons/80x80.png"
+                    },
+                    "iphone" : {
+                        "app@2x" : "static/brand/icons/120x120.png",
+                        "app@3x" : "static/brand/icons/180x180.png",
+                        "notification@2x" : "static/brand/icons/40x40.png",
+                        "notification@3x" : "static/brand/icons/60x60.png",
+                        "settings@2x" : "static/brand/icons/58x58.png",
+                        "settings@3x" : "static/brand/icons/87x87.png",
+                        "spotlight@2x" : "static/brand/icons/80x80.png",
+                        "spotlight@3x" : "static/brand/icons/120x120.png"
+                    }
+                }
+            }
+        }
+    },
+    /* 快应用特有相关 */
+    "quickapp" : {},
+    /* 小程序特有相关 */
+    "mp-weixin" : {
+        "appid" : "",
+        "setting" : {
+            "urlCheck" : false,
+            "minified" : true
+        },
+        "__usePrivacyCheck__" : true,
+        "usingComponents" : true,
+        "privacy" : {
+            "required" : [
+                "chooseAddress" // 声明要使用的地址相关接口
+            ]
+        },
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "您的位置信息将用于小程序位置接口效果展示"
+            }
+        },
+        "requiredPrivateInfos" : [ "chooseLocation", "getLocation", "chooseAddress" ]
+    },
+    "mp-alipay" : {
+        "usingComponents" : true,
+        "appid" : ""
+    },
+    "mp-baidu" : {
+        "usingComponents" : true
+    },
+    "mp-toutiao" : {
+        "usingComponents" : true,
+        "appid" : "",
+        "setting" : {
+            "minified" : true
+        }
+    },
+    "uniStatistics" : {
+        "enable" : false
+    },
+    /* h5特有相关 */
+    "h5" : {
+        "devServer" : {
+            "port" : 8085, //端口号
+            "disableHostCheck" : true,
+            "proxy" : {
+                "/api" : {
+                    "target" : "http://127.0.0.1:1024/index.php", //目标接口域名
+                    "changeOrigin" : true, //是否跨域
+                    "secure" : false,
+                    "pathRewrite" : {
+                        "^/api" : ""
+                    }
+                },
+                "/statics" : {
+                    "target" : "http://127.0.0.1:1024", //系统图片放后端 api/web/statics,本地 H5 开发也走后端取($util.getAsset)
+                    "changeOrigin" : true,
+                    "secure" : false
+                }
+            }
+        },
+        "router" : {
+            "base" : "/h5/" //服务器根目录我存放代码的文件夹
+        },
+        "title" : "H5",
+        "domain" : "",
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
+        },
+        "sdkConfigs" : {
+            "maps" : {
+                "qqmap" : {
+                    "key" : ""
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+/api/config/config.php
+/api/install.lock
+/api/runtime/
+/api/vendor/
+/api/.phpunit.result.cache
+/api/web/admin/
+/api/web/mch/
+/api/web/h5/
+/api/scheduler
+/uniapp/unpackage/

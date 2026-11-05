@@ -1,0 +1,717 @@
+{
+  "known_references": [
+    {
+      "file": "uniapp/components/thorui/tui-bargain-group/tui-bargain-group.vue",
+      "kind": "mobile-route",
+      "line": 262,
+      "reference": "plugins4/bargain/goods"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-bargain-group/tui-bargain-group.vue",
+      "kind": "mobile-route",
+      "line": 265,
+      "reference": "plugins4/bargain/index"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-cs-wrapper/tui-cs-wrapper.vue",
+      "kind": "mobile-route",
+      "line": 196,
+      "reference": "plugins1/chat/chat"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-header-banner/tui-header-banner.vue",
+      "kind": "mobile-route",
+      "line": 266,
+      "reference": "plugins/message/list"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-header-banner/tui-header-banner.vue",
+      "kind": "mobile-route",
+      "line": 263,
+      "reference": "plugins1/mch/spss/spss"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-integral-goods-item/tui-integral-goods-item.vue",
+      "kind": "mobile-route",
+      "line": 2,
+      "reference": "plugins/integral/goods"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-integral-group/tui-integral-group.vue",
+      "kind": "mobile-route",
+      "line": 103,
+      "reference": "plugins/integral/goods"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-integral-group/tui-integral-group.vue",
+      "kind": "mobile-route",
+      "line": 108,
+      "reference": "plugins/integral/index"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-lucky-group/tui-lucky-group.vue",
+      "kind": "mobile-route",
+      "line": 110,
+      "reference": "plugins3/lucky/goods"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-lucky-group/tui-lucky-group.vue",
+      "kind": "mobile-route",
+      "line": 115,
+      "reference": "plugins3/lucky/index"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-massage-hot-service/tui-massage-hot-service.vue",
+      "kind": "mobile-route",
+      "line": 144,
+      "reference": "plugins2/massage/service-detail"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-massage-hot-service/tui-massage-hot-service.vue",
+      "kind": "mobile-route",
+      "line": 147,
+      "reference": "plugins2/massage/service-list"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-massage-new-therapist/tui-massage-new-therapist.vue",
+      "kind": "mobile-route",
+      "line": 137,
+      "reference": "plugins2/massage/therapist-detail"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-massage-new-therapist/tui-massage-new-therapist.vue",
+      "kind": "mobile-route",
+      "line": 140,
+      "reference": "plugins2/massage/therapist-list"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-massage-shop-list/tui-massage-shop-list.vue",
+      "kind": "mobile-route",
+      "line": 143,
+      "reference": "plugins2/massage/shop-detail"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-massage-shop-list/tui-massage-shop-list.vue",
+      "kind": "mobile-route",
+      "line": 146,
+      "reference": "plugins2/massage/shop-list"
+    },
+    {
+      "file": "uniapp/others/order-detail/order-detail.vue",
+      "kind": "mobile-route",
+      "line": 376,
+      "reference": "plugins/emotion/result"
+    },
+    {
+      "file": "uniapp/others/order-detail/order-detail.vue",
+      "kind": "mobile-route",
+      "line": 384,
+      "reference": "plugins/voucher/voucher"
+    },
+    {
+      "file": "uniapp/others/order-detail/order-detail.vue",
+      "kind": "mobile-route",
+      "line": 406,
+      "reference": "plugins2/massage/dispute"
+    },
+    {
+      "file": "uniapp/others/order-detail/order-detail.vue",
+      "kind": "mobile-route",
+      "line": 411,
+      "reference": "plugins2/massage/dispute-list"
+    },
+    {
+      "file": "uniapp/others/order-detail/order-detail.vue",
+      "kind": "mobile-route",
+      "line": 342,
+      "reference": "plugins2/massage/order-create"
+    },
+    {
+      "file": "uniapp/others/order-detail/order-detail.vue",
+      "kind": "mobile-route",
+      "line": 313,
+      "reference": "plugins2/massage/review"
+    },
+    {
+      "file": "uniapp/others/order-detail/order-detail.vue",
+      "kind": "mobile-route",
+      "line": 371,
+      "reference": "plugins3/aidb/letter/mine"
+    },
+    {
+      "file": "uniapp/others/order-detail/order-detail.vue",
+      "kind": "mobile-route",
+      "line": 390,
+      "reference": "plugins3/lucky/record"
+    },
+    {
+      "file": "uniapp/others/order-detail/order-detail.vue",
+      "kind": "mobile-route",
+      "line": 363,
+      "reference": "plugins3/yuda/detail"
+    },
+    {
+      "file": "uniapp/others/order-detail/order-detail.vue",
+      "kind": "mobile-route",
+      "line": 365,
+      "reference": "plugins3/yuda/index"
+    },
+    {
+      "file": "uniapp/others/order-detail/panels/BookingPanel.vue",
+      "kind": "mobile-route",
+      "line": 48,
+      "reference": "plugins4/booking/detail"
+    },
+    {
+      "file": "uniapp/others/order-detail/panels/DiningOrderPanel.vue",
+      "kind": "mobile-route",
+      "line": 168,
+      "reference": "plugins3/dining/session"
+    },
+    {
+      "file": "uniapp/others/order/order.vue",
+      "kind": "mobile-route",
+      "line": 403,
+      "reference": "plugins/voucher/voucher"
+    },
+    {
+      "file": "uniapp/others/order/order.vue",
+      "kind": "mobile-route",
+      "line": 424,
+      "reference": "plugins1/emotion/records"
+    },
+    {
+      "file": "uniapp/others/order/order.vue",
+      "kind": "mobile-route",
+      "line": 422,
+      "reference": "plugins1/emotion/result"
+    },
+    {
+      "file": "uniapp/others/order/order.vue",
+      "kind": "mobile-route",
+      "line": 327,
+      "reference": "plugins2/massage/dispute"
+    },
+    {
+      "file": "uniapp/others/order/order.vue",
+      "kind": "mobile-route",
+      "line": 332,
+      "reference": "plugins2/massage/dispute-list"
+    },
+    {
+      "file": "uniapp/others/order/order.vue",
+      "kind": "mobile-route",
+      "line": 298,
+      "reference": "plugins2/massage/order-create"
+    },
+    {
+      "file": "uniapp/others/order/order.vue",
+      "kind": "mobile-route",
+      "line": 378,
+      "reference": "plugins2/massage/review"
+    },
+    {
+      "file": "uniapp/others/order/order.vue",
+      "kind": "mobile-route",
+      "line": 415,
+      "reference": "plugins3/lucky/record"
+    },
+    {
+      "file": "uniapp/others/user/user-airy/user-airy.vue",
+      "kind": "mobile-route",
+      "line": 22,
+      "reference": "plugins/integral/sign"
+    },
+    {
+      "file": "uniapp/others/user/user-aurora/user-aurora.vue",
+      "kind": "mobile-route",
+      "line": 47,
+      "reference": "plugins/integral/sign"
+    },
+    {
+      "file": "uniapp/others/user/user-card/user-card.vue",
+      "kind": "mobile-route",
+      "line": 26,
+      "reference": "plugins/integral/sign"
+    },
+    {
+      "file": "uniapp/others/user/user-classic/user-classic.vue",
+      "kind": "mobile-route",
+      "line": 38,
+      "reference": "plugins/check_in/index"
+    },
+    {
+      "file": "uniapp/others/user/user-dream/user-dream.vue",
+      "kind": "mobile-route",
+      "line": 54,
+      "reference": "plugins/check_in/index"
+    },
+    {
+      "file": "uniapp/others/user/user-minimalist/user-minimalist.vue",
+      "kind": "mobile-route",
+      "line": 43,
+      "reference": "plugins/integral/sign"
+    },
+    {
+      "file": "uniapp/others/user/user-night/user-night.vue",
+      "kind": "mobile-route",
+      "line": 25,
+      "reference": "plugins/integral/sign"
+    },
+    {
+      "file": "uniapp/others/user/user-silver/user-silver.vue",
+      "kind": "mobile-route",
+      "line": 43,
+      "reference": "plugins/check_in/index"
+    },
+    {
+      "file": "uniapp/others/user/user.vue",
+      "kind": "mobile-route",
+      "line": 19,
+      "reference": "plugins1/chat/list"
+    },
+    {
+      "file": "api/models/OrderDetail.php",
+      "kind": "php-plugin-class",
+      "line": 230,
+      "reference": "exchange\\models\\ExchangeGoods"
+    },
+    {
+      "file": "api/plugins/mch/forms/admin/mch/MchActionsForm.php",
+      "kind": "php-plugin-class",
+      "line": 128,
+      "reference": "plaza\\models\\PlazaLease"
+    },
+    {
+      "file": "api/plugins/mch/forms/admin/mch/MchActionsForm.php",
+      "kind": "php-plugin-class",
+      "line": 127,
+      "reference": "plaza\\models\\PlazaStore"
+    },
+    {
+      "file": "api/plugins/mch/forms/admin/mch/MchActionsForm.php",
+      "kind": "php-plugin-class",
+      "line": 136,
+      "reference": "plaza\\services\\TenantResolver"
+    },
+    {
+      "file": "api/plugins/mch/forms/mall/MchEditForm.php",
+      "kind": "php-plugin-class",
+      "line": 412,
+      "reference": "im\\helpers\\ImHelper"
+    },
+    {
+      "file": "api/plugins/mch/models/Mch.php",
+      "kind": "php-plugin-class",
+      "line": 282,
+      "reference": "hotel\\models\\Hotel"
+    },
+    {
+      "file": "admin/src/components/common/PtGoodsPicker.vue",
+      "kind": "plugin-api",
+      "line": 92,
+      "reference": "pt/mall/goods/list"
+    },
+    {
+      "file": "admin/src/components/diy/BargainGroup.vue",
+      "kind": "plugin-api",
+      "line": 208,
+      "reference": "bargain/mall/goods/index"
+    },
+    {
+      "file": "admin/src/store/modules/im.js",
+      "kind": "plugin-api",
+      "line": 144,
+      "reference": "im/mall/chat/unread"
+    },
+    {
+      "file": "admin/src/store/modules/im.js",
+      "kind": "plugin-api",
+      "line": 50,
+      "reference": "im/mall/index/config"
+    },
+    {
+      "file": "mch/src/views/cashier.vue",
+      "kind": "plugin-api",
+      "line": 283,
+      "reference": "shop/api/shop/goods-by-no"
+    },
+    {
+      "file": "mch/src/views/cashier.vue",
+      "kind": "plugin-api",
+      "line": 152,
+      "reference": "shop/api/shop/order-detail"
+    },
+    {
+      "file": "mch/src/views/cashier.vue",
+      "kind": "plugin-api",
+      "line": 244,
+      "reference": "shop/api/shop/order-submit"
+    },
+    {
+      "file": "mch/src/views/cashier.vue",
+      "kind": "plugin-api",
+      "line": 211,
+      "reference": "shop/api/shop/ordering"
+    },
+    {
+      "file": "mch/src/views/cashier.vue",
+      "kind": "plugin-api",
+      "line": 268,
+      "reference": "shop/api/shop/setting"
+    },
+    {
+      "file": "uniapp/App.vue",
+      "kind": "plugin-api",
+      "line": 384,
+      "reference": "im/api/chat/unread"
+    },
+    {
+      "file": "uniapp/App.vue",
+      "kind": "plugin-api",
+      "line": 262,
+      "reference": "im/api/index/config"
+    },
+    {
+      "file": "uniapp/App.vue",
+      "kind": "plugin-api",
+      "line": 214,
+      "reference": "plaza/api/index/bc-auth-params"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-bargain-group/tui-bargain-group.vue",
+      "kind": "plugin-api",
+      "line": 223,
+      "reference": "bargain/api/bargain/index"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-cs-wrapper/tui-cs-wrapper.vue",
+      "kind": "plugin-api",
+      "line": 93,
+      "reference": "im/api/index/config"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-cs-wrapper/tui-cs-wrapper.vue",
+      "kind": "plugin-api",
+      "line": 155,
+      "reference": "im/api/index/match-cs"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-integral-group/tui-integral-group.vue",
+      "kind": "plugin-api",
+      "line": 86,
+      "reference": "integral/api/goods/list"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-lucky-group/tui-lucky-group.vue",
+      "kind": "plugin-api",
+      "line": 92,
+      "reference": "lucky/api/goods/index"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-massage-hot-service/tui-massage-hot-service.vue",
+      "kind": "plugin-api",
+      "line": 132,
+      "reference": "massage/api/index/diy-hot-service"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-massage-hot-service/tui-massage-hot-service.vue",
+      "kind": "plugin-api",
+      "line": 122,
+      "reference": "massage/api/index/features"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-massage-new-therapist/tui-massage-new-therapist.vue",
+      "kind": "plugin-api",
+      "line": 120,
+      "reference": "massage/api/index/diy-new-therapist"
+    },
+    {
+      "file": "uniapp/components/thorui/tui-massage-shop-list/tui-massage-shop-list.vue",
+      "kind": "plugin-api",
+      "line": 127,
+      "reference": "massage/api/index/diy-shop-list"
+    },
+    {
+      "file": "uniapp/others/order-detail/order-detail.vue",
+      "kind": "plugin-api",
+      "line": 511,
+      "reference": "voucher/api/order/activate"
+    },
+    {
+      "file": "uniapp/others/order-detail/panels/DiningOrderPanel.vue",
+      "kind": "plugin-api",
+      "line": 152,
+      "reference": "dining/api/shop/order-status"
+    },
+    {
+      "file": "uniapp/others/order/order.vue",
+      "kind": "plugin-api",
+      "line": 396,
+      "reference": "voucher/api/order/activate"
+    }
+  ],
+  "new_references": [],
+  "page_count": 108,
+  "plugin_links": {
+    "article": 1,
+    "clerk": 1,
+    "distribution": 1,
+    "marketing": 3,
+    "mch": 15,
+    "withdraw": 11
+  },
+  "plugins": [
+    "article",
+    "clerk",
+    "distribution",
+    "marketing",
+    "mch",
+    "withdraw"
+  ],
+  "removed_references": [
+    {
+      "file": "uniapp/others/account-deletion/account-deletion.vue",
+      "kind": "mobile-route",
+      "reference": "others/zxxy/zxxy"
+    },
+    {
+      "file": "uniapp/others/setting/setting.vue",
+      "kind": "mobile-route",
+      "reference": "plugins2/massage/block-list"
+    },
+    {
+      "file": "api/commands/TestDoubleVoidController.php",
+      "kind": "php-plugin-class",
+      "reference": "aicare\\jobs\\AicareOrderCanceledJob"
+    },
+    {
+      "file": "api/commands/TestDoubleVoidController.php",
+      "kind": "php-plugin-class",
+      "reference": "aicare\\models\\AicareGoods"
+    },
+    {
+      "file": "api/commands/TestDoubleVoidController.php",
+      "kind": "php-plugin-class",
+      "reference": "aicare\\models\\AicareMember"
+    },
+    {
+      "file": "api/commands/TestDoubleVoidController.php",
+      "kind": "php-plugin-class",
+      "reference": "brand\\jobs\\OrderPaidJob"
+    },
+    {
+      "file": "api/commands/TestDoubleVoidController.php",
+      "kind": "php-plugin-class",
+      "reference": "brand\\jobs\\OrderRevertJob"
+    },
+    {
+      "file": "api/commands/TestDoubleVoidController.php",
+      "kind": "php-plugin-class",
+      "reference": "brand\\models\\BrandBonusPool"
+    },
+    {
+      "file": "api/commands/TestDoubleVoidController.php",
+      "kind": "php-plugin-class",
+      "reference": "brand\\models\\BrandGoods"
+    },
+    {
+      "file": "api/commands/TestExchangeCompleteController.php",
+      "kind": "php-plugin-class",
+      "reference": "dining\\services\\DiningOrderService"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "brand\\jobs\\OrderPaidJob"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "brand\\jobs\\OrderRevertJob"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "brand\\models\\BrandGoods"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "brand\\models\\BrandRegionAgent"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "brand\\models\\BrandUser"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "dealer\\models\\DealerDividendPoolLog"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "dealer\\models\\DealerGoods"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "queue\\models\\QueueOrder"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "recruit\\forms\\common\\CommonSetting"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "recruit\\models\\RecruitLog"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "recruit\\models\\RecruitMember"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "youwei\\models\\YouweiGoods"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "youwei\\models\\YouweiLevelDividend"
+    },
+    {
+      "file": "api/commands/TestPartialRefundE2eController.php",
+      "kind": "php-plugin-class",
+      "reference": "youwei\\models\\YouweiPerfEntry"
+    },
+    {
+      "file": "api/commands/TestSensitiveFieldsController.php",
+      "kind": "php-plugin-class",
+      "reference": "yuda\\forms\\api\\PartyListForm"
+    },
+    {
+      "file": "api/commands/WxNotifyBindTestController.php",
+      "kind": "php-plugin-class",
+      "reference": "hardware\\controllers\\api\\NotificationController"
+    },
+    {
+      "file": "api/commands/WxNotifyBindTestController.php",
+      "kind": "php-plugin-class",
+      "reference": "hardware\\forms\\api"
+    },
+    {
+      "file": "api/plugins/clerk/commands/TestController.php",
+      "kind": "php-plugin-class",
+      "reference": "integral\\models\\IntegralGoods"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\Plugin"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\controllers\\api\\BookController"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\controllers\\api\\CertificateController"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\forms\\api\\BookForm"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\forms\\api\\CertificatePosterForm"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\forms\\mall\\SettingForm"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\jobs\\GenerateCertificateJob"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\jobs\\GenerateJob"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\listeners\\AidbIntegralTypeListener"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\models\\Book"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\models\\Certificate"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\services\\AiService"
+    },
+    {
+      "file": "api/plugins/withdraw/commands/ClasscheckController.php",
+      "kind": "php-plugin-class",
+      "reference": "aidb\\services\\AidbCostService"
+    },
+    {
+      "file": "api/web/notify/wxstore.php",
+      "kind": "plugin-api",
+      "reference": "wxstore/notify/wxstore/notify"
+    }
+  ],
+  "verified_embedded_fonts": {
+    "admin/src/components/TuiIconPicker/tui-icons.css": [
+      "40b12d37175c1e3631dcbf13591a869aceab3e3c4122d683ea54d3e3b2bcd958"
+    ],
+    "uniapp/components/thorui/tui-calendar/tui-calendar.vue": [
+      "b14f6215d1f15032fcdcffa631f6c60a88e32a3174bc2bc4f8a650b29ccaa2ef"
+    ],
+    "uniapp/components/thorui/tui-collapse/tui-collapse.vue": [
+      "eded1eef66fa02bbdd2341295b4fb7871753f8908aaf0cc8a5d890ad8a38b647"
+    ],
+    "uniapp/components/thorui/tui-fab/tui-fab.vue": [
+      "7a4b4007c862abd7a4fce9d6c63ece916e482329fbc79e04ebd11d9db8904d0f"
+    ],
+    "uniapp/components/thorui/tui-icon/tui-icon.vue": [
+      "40b12d37175c1e3631dcbf13591a869aceab3e3c4122d683ea54d3e3b2bcd958"
+    ],
+    "uniapp/components/thorui/tui-keyboard/tui-keyboard.vue": [
+      "30d1820d1cd6ed5190cd1940e3dae84c0033d167f6fdef64a8f7fcb0d08df789"
+    ],
+    "uniapp/components/thorui/tui-numberbox/tui-numberbox.vue": [
+      "4aa68c8304af9d1c914b78cf2009318b50f3e49ab197961a6ba06256ff459a5c"
+    ],
+    "uniapp/components/thorui/tui-rate/tui-rate.vue": [
+      "9d63be06766c7b0912b0b71a0b5a7e4056e49d670fa6e5e5387c94dbffae4b3e"
+    ]
+  },
+  "verified_font_files": {
+    "api/resources/legacy-icon-fonts/thorui-40b12d37175c.woff": "40b12d37175c1e3631dcbf13591a869aceab3e3c4122d683ea54d3e3b2bcd958",
+    "api/resources/legacy-icon-fonts/uniicons-89ed7d6d732e.ttf": "89ed7d6d732e893a473c6d6b443f854f4dcdf57360a11016306335a2048895ff",
+    "api/web/statics/fonts/NotoSansSC-Bold.otf": "c6cb5a93abaa9edc8ee7463b7ebb7f42d618d40e6ed2f7a5371c97b0b64767c0",
+    "api/web/statics/fonts/NotoSansSC-Regular.otf": "faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9",
+    "uniapp/uni_modules/uni-icons/components/uni-icons/uniicons.ttf": "89ed7d6d732e893a473c6d6b443f854f4dcdf57360a11016306335a2048895ff"
+  }
+}

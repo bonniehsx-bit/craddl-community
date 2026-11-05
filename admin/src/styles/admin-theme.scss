@@ -1,0 +1,57 @@
+// 使用 html 选择器覆盖 Element 的默认前景色，保证浅色自定义按钮可读。
+html[data-admin-theme] {
+  .el-button--primary:not(.is-plain),
+  .el-button--primary.is-plain:hover,
+  .el-button--primary.is-plain:focus,
+  .el-pagination.is-background .el-pager li:not(.disabled).active,
+  .el-date-table td.current:not(.disabled) span {
+    color: var(--admin-on-primary);
+  }
+  .el-checkbox__input.is-checked .el-checkbox__inner::after,
+  .el-checkbox__input.is-indeterminate .el-checkbox__inner::after {
+    border-color: var(--admin-on-primary);
+  }
+  .el-checkbox__input.is-indeterminate .el-checkbox__inner::before,
+  .el-radio__input.is-checked .el-radio__inner::after {
+    background: var(--admin-on-primary);
+  }
+  .tags-view-item.active { color: var(--admin-on-primary) !important; }
+  .tags-view-item.active::before { background: var(--admin-on-primary) !important; }
+  // 后台个人配色不改变登录页的固定品牌按钮。
+  .login-container .login-btn.el-button--primary {
+    background: #F7F6F2;
+    color: #191B20;
+    &:hover, &:focus { background: #E7E5DE; color: #191B20; }
+    &:active { background: #D8D5CB; }
+  }
+}
+
+html[data-admin-theme='craddl'] {
+  #app .split-nav,
+  #app .split-nav .sidebar-logo-container,
+  #app .split-nav .el-menu,
+  #app .split-nav .el-menu-item,
+  #app .sidebar-container.admin-dark,
+  #app .sidebar-container.admin-dark .sidebar-logo-container,
+  #app .sidebar-container .theme-dark .el-menu,
+  #app .sidebar-container .theme-dark .el-submenu__title,
+  #app .sidebar-container .theme-dark .el-menu-item {
+    background-color: #191B20 !important;
+  }
+  #app .split-nav .el-menu-item:hover,
+  #app .sidebar-container .theme-dark .el-submenu__title:hover,
+  #app .sidebar-container .theme-dark .el-menu-item:hover {
+    background-color: #292C32 !important;
+  }
+  #app .split-nav .el-menu-item.is-active,
+  #app .sidebar-container .theme-dark .el-menu-item.is-active {
+    background-color: #30291F !important;
+    box-shadow: inset 3px 0 #F7931E;
+  }
+  #app .sidebar-container .theme-light .el-menu-item.is-active { background-color: #FFF2E2 !important; }
+  .el-button--text:not(.is-disabled), .el-link.el-link--primary:not(.is-disabled) { color: #A8540A; }
+  .el-button--text:not(.is-disabled):hover, .el-link.el-link--primary:not(.is-disabled):hover { color: #783B05; }
+  .el-input__inner:focus, .el-textarea__inner:focus { border-color: #A8540A; }
+  .el-button--primary:not(.is-disabled):not(.is-plain):not(.login-btn):hover,
+  .el-button--primary:not(.is-disabled):not(.is-plain):not(.login-btn):focus { background: #34373E; border-color: #34373E; }
+}

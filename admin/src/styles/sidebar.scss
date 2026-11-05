@@ -1,0 +1,483 @@
+#app {
+
+  .main-container {
+    min-height: 100%;
+    transition: margin-left .28s;
+    margin-left: $base-sidebar-width;
+    position: relative;
+  }
+
+  .sidebarHide {
+    margin-left: 0 !important;
+  }
+
+  .sidebar-container {
+    -webkit-transition: width .28s;
+    transition: width 0.28s;
+    width: $base-sidebar-width !important;
+    background-color: $base-menu-background;
+    height: 100%;
+    position: fixed;
+    font-size: 0px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    overflow: hidden;
+    -webkit-box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+    box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+
+    // reset element-ui css
+    .horizontal-collapse-transition {
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+    }
+
+    .scrollbar-wrapper {
+      overflow-x: hidden !important;
+    }
+
+    .el-scrollbar__bar.is-vertical {
+      right: 0px;
+    }
+
+    // 底部要固定一个账号区,再用 height: calc(100% - 各种固定高度) 就会组合爆炸
+    // (有无 logo × 有无账号区 × 折叠与否)。改成 flex:菜单区吃掉剩余空间并自己滚动,
+    // 账号区 flex:none 始终贴底。菜单再多也不会把账号区顶出视口。
+    display: flex;
+    flex-direction: column;
+
+    .el-scrollbar {
+      flex: 1;
+      min-height: 0;          // 不加这个 flex 子项不会收缩,内容一多就把容器撑破、滚动失效
+      height: auto;
+    }
+
+    &.has-logo {
+      .el-scrollbar {
+        height: auto;         // 高度交给 flex 算,不再手工减 logo 的 50px
+      }
+    }
+
+    .is-horizontal {
+      display: none;
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .svg-icon {
+      margin-right: 10px;
+      font-size: 12px;
+    }
+
+    .sub-el-icon {
+      margin-right: 10px;
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      font-size: 16px; // User requested 16px
+      display: inline-block;
+      text-align: center;
+      color: inherit;
+    }
+
+    .el-menu {
+      border: none;
+      height: 100%;
+      width: 100% !important;
+    }
+
+    .el-menu-item,
+    .el-submenu__title {
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+    }
+
+    // menu hover
+    .submenu-title-noDropdown,
+    .el-submenu__title {
+      height: 45px !important;
+      line-height: 45px !important;
+      font-size: 12px !important;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.06) !important;
+      }
+    }
+
+    .el-menu-item {
+      height: 45px !important;
+      line-height: 45px !important;
+      font-size: 12px !important;
+    }
+
+    & .theme-dark .is-active>.el-submenu__title {
+      color: $base-menu-color-active !important;
+    }
+
+    /* 右侧菜单被选中时的终极高亮态（背景色 + 动态主题字体色） */
+    & .theme-dark .el-menu-item.is-active {
+      background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    & .nest-menu .el-submenu>.el-submenu__title,
+    & .el-submenu .el-menu-item {
+      /* 覆盖 element 默认 .el-submenu .el-menu-item { padding:0 45px; min-width:200px }：
+         右栏仅 ~142px，200 的 min-width 会撑爆容器、左右各 45px 内边距吃光文字区，
+         导致 5 个中文字就省略号。改为不撑容器 + 收窄内边距（左留少量缩进表层级）。 */
+      min-width: 0 !important;
+      padding-left: 24px !important;
+      padding-right: 12px !important;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.06) !important;
+      }
+    }
+
+    & .theme-dark .nest-menu .el-submenu>.el-submenu__title,
+    & .theme-dark .el-submenu .el-menu-item {
+      background-color: $base-sub-menu-background !important;
+
+      &:hover {
+        background-color: $base-sub-menu-hover !important;
+      }
+    }
+
+    /* 动态缩放控制梯队 (优先级最高，强制覆盖上方固定值) - 增加视觉呼吸感 */
+    &.size-default {
+      .sub-el-icon {
+        font-size: 15px !important;
+      }
+
+      .submenu-title-noDropdown,
+      .el-submenu__title,
+      .el-menu-item {
+        height: 50px !important;
+        line-height: 50px !important;
+        font-size: 14px !important;
+      }
+    }
+
+    &.size-medium {
+      .sub-el-icon {
+        font-size: 14px !important;
+      }
+
+      .submenu-title-noDropdown,
+      .el-submenu__title,
+      .el-menu-item {
+        height: 46px !important;
+        line-height: 46px !important;
+        font-size: 13px !important;
+      }
+    }
+
+    &.size-small {
+      .sub-el-icon {
+        font-size: 13px !important;
+      }
+
+      .submenu-title-noDropdown,
+      .el-submenu__title,
+      .el-menu-item {
+        height: 44px !important;
+        line-height: 44px !important;
+        font-size: 13px !important;
+      }
+    }
+
+    &.size-mini {
+      .sub-el-icon {
+        font-size: 12px !important;
+      }
+
+      .submenu-title-noDropdown,
+      .el-submenu__title,
+      .el-menu-item {
+        height: 42px !important;
+        line-height: 42px !important;
+        font-size: 12px !important;
+        transform: scale(0.95);
+        transform-origin: left center;
+      }
+    }
+  }
+
+  .hideSidebar {
+    .sidebar-container {
+      width: 54px !important;
+    }
+
+    .main-container {
+      margin-left: 54px;
+    }
+
+    .submenu-title-noDropdown {
+      padding: 0 !important;
+      position: relative;
+
+      .el-tooltip {
+        padding: 0 !important;
+
+        .svg-icon {
+          margin-left: 20px;
+        }
+      }
+    }
+
+    .el-submenu {
+      overflow: hidden;
+
+      &>.el-submenu__title {
+        padding: 0 !important;
+
+        .svg-icon {
+          margin-left: 20px;
+        }
+
+      }
+    }
+
+    .el-menu--collapse {
+      .el-submenu {
+        &>.el-submenu__title {
+          &>span {
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            visibility: hidden;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  .el-menu--collapse .el-menu .el-submenu {
+    min-width: $base-sidebar-width !important;
+  }
+
+  // mobile responsive
+  .mobile {
+    .main-container {
+      margin-left: 0px;
+    }
+
+    .sidebar-container {
+      transition: transform .28s;
+
+    }
+
+    &.hideSidebar {
+      .sidebar-container {
+        pointer-events: none;
+        transition-duration: 0.3s;
+        transform: translate3d(-$base-sidebar-width, 0, 0);
+      }
+    }
+  }
+
+  .withoutAnimation {
+
+    .main-container,
+    .sidebar-container {
+      transition: none;
+    }
+  }
+
+  /* 双分栏模式样式覆盖 (Split Menu Overrides)
+   * 左栏宽度由 CSS 变量 --split-nav-w 控制（注入自 layout/index.vue）
+   * default/medium: 122px | small: 106px | mini: 90px
+   * 右栏宽度由 CSS 变量 --sidebar-w 控制
+   * default/medium: 142px | small: 136px | mini: 130px
+   */
+  .hasSplitMenu {
+    .sidebar-container {
+      left: var(--split-nav-w, 122px) !important;
+      width: var(--sidebar-w, 142px) !important;
+
+      .nest-menu .el-submenu>.el-submenu__title,
+      .el-submenu .el-menu-item {
+        min-width: var(--sidebar-w, 142px) !important;
+      }
+
+      .el-menu--collapse .el-submenu {
+        min-width: var(--sidebar-w, 142px) !important;
+      }
+
+      /* 用户诉求：二级菜单完全隐藏图标，仅保留清爽文字 */
+      .svg-icon,
+      .sub-el-icon {
+        display: none !important;
+      }
+
+      /* 压缩 Element UI 的内联左边距递推算法，收拢空降留白 */
+      .el-menu-item,
+      .el-submenu__title {
+        padding-left: 12px !important;
+        /* element 默认 .el-submenu .el-menu-item 右内边距高达 45px，
+           右栏仅 ~142px 时直接把文字区挤到 5 个字就省略号，这里一并收窄 */
+        padding-right: 12px !important;
+      }
+
+      .el-menu--inline .el-menu-item,
+      .el-menu--inline .el-submenu__title {
+        padding-left: 24px !important;
+      }
+
+      .el-menu--inline .el-menu--inline .el-menu-item {
+        padding-left: 36px !important;
+      }
+    }
+
+    /* small/mini 时压缩子菜单缩进，避免文字被截断 */
+    &.app-size-small .sidebar-container,
+    &.app-size-mini .sidebar-container {
+      .el-menu-item,
+      .el-submenu__title {
+        padding-left: 8px !important;
+      }
+
+      .el-menu--inline .el-menu-item,
+      .el-menu--inline .el-submenu__title {
+        padding-left: 16px !important;
+      }
+
+      .el-menu--inline .el-menu--inline .el-menu-item {
+        padding-left: 24px !important;
+      }
+    }
+
+    .main-container {
+      margin-left: calc(var(--split-nav-w, 122px) + var(--sidebar-w, 142px)) !important;
+
+      &.sidebarHide {
+        margin-left: var(--split-nav-w, 122px) !important;
+      }
+    }
+
+    .fixed-header {
+      width: calc(100% - var(--split-nav-w, 122px) - var(--sidebar-w, 142px)) !important;
+    }
+
+    .sidebarHide .fixed-header {
+      width: calc(100% - var(--split-nav-w, 122px)) !important;
+    }
+  }
+
+  .hideSidebar.hasSplitMenu {
+    .sidebar-container {
+      left: 54px !important;
+    }
+
+    .main-container {
+      margin-left: calc(54px + var(--sidebar-w, 142px)) !important;
+
+      &.sidebarHide {
+        margin-left: 54px !important;
+
+        .fixed-header {
+          width: calc(100% - 54px) !important;
+        }
+      }
+    }
+
+    .fixed-header {
+      width: calc(100% - 54px - var(--sidebar-w, 142px)) !important;
+    }
+  }
+
+  /* 移动端双分栏响应式大修覆写 */
+  .mobile.hasSplitMenu {
+    .split-nav {
+      transition: transform .28s;
+      transform: translate3d(0, 0, 0);
+    }
+    
+    .sidebar-container {
+      transition: transform .28s;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .main-container {
+      margin-left: 0 !important;
+      
+      &.sidebarHide {
+        margin-left: 0 !important;
+      }
+    }
+
+    .fixed-header {
+      width: 100% !important;
+    }
+  }
+
+  /* 移动端且折叠菜单时的终极隐藏策略 */
+  .mobile.hideSidebar.hasSplitMenu {
+    .split-nav {
+      pointer-events: none;
+      transform: translate3d(-100%, 0, 0);
+    }
+
+    .sidebar-container {
+      pointer-events: none;
+      /* 将侧边栏向外丢够足以掩盖整个实体范围的距离 */
+      transform: translate3d(-300px, 0, 0) !important;
+    }
+    
+    .fixed-header {
+      width: 100% !important;
+    }
+  }
+}
+
+// when menu collapsed
+.el-menu--vertical {
+  &>.el-menu {
+    .svg-icon {
+      margin-right: 10px;
+      font-size: 16px;
+    }
+
+    .sub-el-icon {
+      margin-right: 10px;
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      font-size: 16px;
+      text-align: center;
+      color: inherit;
+    }
+  }
+
+  .nest-menu .el-submenu>.el-submenu__title,
+  .el-menu-item {
+    &:hover {
+      // you can use $subMenuHover
+      background-color: rgba(0, 0, 0, 0.06) !important;
+    }
+  }
+
+  // the scroll bar appears when the subMenu is too long
+  >.el-menu--popup {
+    max-height: 100vh;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar-track-piece {
+      background: #d3dce6;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #99a9bf;
+      border-radius: 20px;
+    }
+  }
+}

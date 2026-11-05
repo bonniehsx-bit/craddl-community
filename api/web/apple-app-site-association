@@ -1,0 +1,11 @@
+{  
+    "applinks": {  
+        "apps": [],  
+        "details": [  
+            {  
+                "appID": "ios应用ID.包名",
+                "paths": [ "/ulink/*"]  
+            }  
+        ]  
+    }  
+}

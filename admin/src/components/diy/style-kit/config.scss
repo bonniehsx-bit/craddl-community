@@ -1,0 +1,73 @@
+/* 风格组件配置面板的统一样式(各 *Config.vue 里 @import) */
+.style-config {
+  .config-section {
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0f2f5;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .section-title {
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 12px;
+    color: #303133;
+  }
+
+  .tip {
+    font-size: 12px;
+    color: #909399;
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+
+  .color-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #606266;
+    }
+  }
+
+  .list-item {
+    position: relative;
+    padding: 8px 10px 2px;
+    margin-bottom: 10px;
+    border: 1px solid #ebeef5;
+    border-radius: 6px;
+    background: #fcfcfd;
+
+    /* 列表项头部单独一行(序号 + 上移 / 删除),不再悬浮压在输入框上 */
+    .item-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: #909399;
+    }
+
+    .item-ops {
+      display: flex;
+      gap: 12px;
+
+      a {
+        color: var(--admin-accent-text);
+        cursor: pointer;
+      }
+
+      .del {
+        color: #f56c6c;
+      }
+    }
+  }
+}

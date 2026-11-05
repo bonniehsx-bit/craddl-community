@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link id="dynamic-favicon" rel="icon" href="<%= BASE_URL %>favicon.ico?v=craddl-1">
+  <title><%= webpackConfig.name %></title>
+  <style>
+    html, body { height: 100%; margin: 0; padding: 0; background: #fff; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; overflow: hidden; }
+    #app { min-height: 100%; height: auto; position: relative; }
+    /* 页面滚动交回根节点，避免固定侧栏的 Popper 重复扣除 body.scrollTop。 */
+    body.loaded { overflow: visible; }
+
+    #loader-wrapper {
+      position: fixed; inset: 0; z-index: 99999;
+      display: flex; align-items: center; justify-content: center;
+      background: #111317; color: #f4f4f5;
+      transition: opacity 300ms linear;
+    }
+    #loader-wrapper::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 50% 54%, rgba(247, 147, 30, 0.045), transparent 54%);
+    }
+    #loader-wrapper.is-leaving { opacity: 0; pointer-events: none; }
+    .boot-brand { position: relative; padding: 32px; text-align: center; }
+    .boot-word { display: flex; justify-content: center; gap: clamp(8px, 1.5vw, 16px); font-size: clamp(40px, 6vw, 64px); font-weight: 650; line-height: 1.15; }
+    .boot-letter { position: relative; display: inline-block; animation: craddl-letter-in 240ms cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--letter) * 20ms); }
+    .boot-letter:first-child::after { content: ''; position: absolute; right: 0.03em; bottom: 0.16em; width: 0.2em; height: 0.09em; background: #f7931e; transform: skewX(-32deg); }
+    .boot-tagline { margin: 18px 0 0; color: #93969d; font-size: 12px; font-weight: 400; line-height: 1.6; letter-spacing: 0.7px; animation: craddl-copy-in 240ms ease 80ms both; }
+    .boot-track { position: relative; overflow: hidden; width: 144px; height: 2px; margin: 30px auto 0; border-radius: 2px; background: rgba(255, 255, 255, 0.08); }
+    .boot-track::after { content: ''; position: absolute; inset: 0; background: #f7931e; transform-origin: left; animation: craddl-progress 620ms ease-out both; }
+    @keyframes craddl-letter-in { from { opacity: 0.55; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes craddl-copy-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes craddl-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    @media (prefers-reduced-motion: reduce) {
+      #loader-wrapper { transition: none; }
+      .boot-letter, .boot-tagline, .boot-track::after { animation: none; opacity: 1; transform: none; }
+    }
+  </style>
+  <noscript><style>#loader-wrapper { display: none; } body { overflow: auto; }</style></noscript>
+</head>
+<body class="loading-state">
+  <div id="app"></div>
+  <div id="loader-wrapper" role="status" aria-label="Craddl 正在加载">
+    <div class="boot-brand">
+      <div class="boot-word" aria-hidden="true"><span class="boot-letter" style="--letter:0">C</span><span class="boot-letter" style="--letter:1">R</span><span class="boot-letter" style="--letter:2">A</span><span class="boot-letter" style="--letter:3">D</span><span class="boot-letter" style="--letter:4">D</span><span class="boot-letter" style="--letter:5">L</span></div>
+      <p class="boot-tagline" aria-hidden="true">Business, on your terms.</p>
+      <div class="boot-track" aria-hidden="true"></div>
+    </div>
+  </div>
+  <noscript><p>请启用 JavaScript 后使用 Craddl。</p></noscript>
+  <script>
+    (function () {
+      var wrapper = document.getElementById('loader-wrapper');
+      if (!wrapper) return;
+      var started = Date.now();
+      var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var minimumDuration = reducedMotion ? 0 : 620;
+      var leaving = false;
+      var observer;
+      var fallbackTimer;
+
+      function removeLoader() {
+        if (wrapper.parentNode) wrapper.parentNode.removeChild(wrapper);
+        document.body.classList.remove('loading-state');
+        document.body.classList.add('loaded');
+      }
+      function finishLoading() {
+        if (leaving) return;
+        leaving = true;
+        if (observer) observer.disconnect();
+        clearTimeout(fallbackTimer);
+        window.removeEventListener('load', checkLoaded);
+        if (reducedMotion) return removeLoader();
+        var remaining = Math.max(0, minimumDuration - (Date.now() - started));
+        setTimeout(function () {
+          wrapper.classList.add('is-leaving');
+          setTimeout(removeLoader, 340);
+        }, remaining);
+      }
+      function checkLoaded() {
+        // Vue 2 会替换挂载节点，必须读取当前根节点，不能持有已脱离文档的旧引用。
+        var app = document.getElementById('app');
+        if (app && app.children.length > 0) finishLoading();
+      }
+      if (window.MutationObserver) {
+        observer = new MutationObserver(checkLoaded);
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+      window.addEventListener('load', checkLoaded);
+      // 页面资源异常时释放遮罩，避免品牌动画长期阻挡界面。
+      fallbackTimer = setTimeout(finishLoading, 10000);
+      checkLoaded();
+    })();
+  </script>
+</body>
+</html>

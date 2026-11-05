@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "prompt": "template",
+    "title": "隐私政策和用户协议",
+    "message": "欢迎使用{APP_NAME}！为了更好地保障您的权益，在您使用本产品前，请务必审慎阅读并充分理解 <a href=\"{DOMAIN}/index.php?r=/site/privacy&mall_id={MALL_ID}\">《隐私政策》</a> 与 <a href=\"{DOMAIN}/index.php?r=/site/protocol&mall_id={MALL_ID}\">《用户协议》</a> 的各条款内容。我们将按照上述协议收集、使用和保护您的个人信息，并申请必要的系统权限（如存储、位置等）。如果您同意，请点击“同意并接受”开始我们的服务。",
+    "buttonAccept": "同意并接受",
+    "buttonRefuse": "暂不同意",
+    "second": {
+        "title": "确认提示",
+        "message": "同意并接受上述协议，您方可进入{APP_NAME}。若您不同意 <a href=\"{DOMAIN}/index.php?r=/site/privacy&mall_id={MALL_ID}\">《隐私政策》</a> 和 <a href=\"{DOMAIN}/index.php?r=/site/protocol&mall_id={MALL_ID}\">《用户协议》</a>，我们将无法为您提供服务并退出应用。",
+        "buttonAccept": "同意并接受",
+        "buttonRefuse": "退出应用"
+    },
+    "styles": {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": "10px",
+        "title": {
+            "color": "#333333"
+        },
+        "buttonAccept": {
+            "color": "{PRIMARY_COLOR}"
+        },
+        "buttonRefuse": {
+            "color": "#999999"
+        }
+    }
+}

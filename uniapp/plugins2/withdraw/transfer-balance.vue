@@ -1,0 +1,502 @@
+<template>
+  <tui-page :useCustomNav="true" :transparentNav="true" :showBackBtn="true" :title="$noun('withdraw.balance_transfer_title')">
+    <view class="page" :style="themeStyle">
+      <asset-hero :label="'当前可用' + $noun('balance') + ' (元)'" :amount="user ? user.money : '0.00'"></asset-hero>
+      <view class="container">
+
+      <feature-closed v-if="closed" title="余额转赠暂未开放" :desc="'如有疑问,请联系客服'"></feature-closed>
+      <block v-else>
+      <view class="form-card">
+
+        <view class="section-title">接收用户</view>
+
+        <view v-if="!target" class="search-box">
+          <view class="input-wrapper">
+            <tui-icon name="search" :size="20" color="#999"></tui-icon>
+            <input
+                class="search-input"
+                type="number"
+                v-model.trim="target_id"
+                placeholder="请输入对方的用户ID"
+                placeholder-class="ph-color"
+            />
+          </view>
+          <view
+              class="search-btn"
+              @click="getTargetInfo"
+              :style="'background:' + (target_id ? themeColor : '#F0F0F0') + ';color:' + (target_id ? '#fff' : '#999')"
+          >
+            {{ isSearching ? '查找中...' : '查找' }}
+          </view>
+        </view>
+
+        <view v-if="target" class="user-result-card">
+          <image :src="target.avatar_url || '/static/icons/avatar.png'" class="avatar" mode="aspectFill"></image>
+          <view class="info">
+            <view class="nickname">{{ target.nickname }}</view>
+            <view class="uid">ID: {{ target.id }}</view>
+          </view>
+          <view class="close-icon" @click="changeTarget">
+            <tui-icon name="close-fill" :size="20" color="#ccc"></tui-icon>
+          </view>
+        </view>
+
+        <view class="section-title mt-40">{{ $noun('withdraw.transfer_action') }}金额</view>
+        <view class="amount-box" :class="{ 'disabled': !target }">
+          <text class="symbol">¥</text>
+          <input
+              class="amount-input"
+              type="digit"
+              v-model="money"
+              placeholder="0.00"
+              placeholder-class="amount-ph"
+              :disabled="!target"
+          />
+        </view>
+        <view class="balance-tip" v-if="target">
+          <text>可{{ $noun('withdraw.transfer_action') }}额度 ¥{{ user ? user.money : '0.00' }}</text>
+          <text class="all-btn" :style="'color:' + themeColor" @click="money = user.money">全部转出</text>
+        </view>
+
+      </view>
+
+      <view class="footer-action">
+        <button
+            class="submit-btn"
+            :class="{ disabled: !canSubmit }"
+            @click="handleSubmit"
+            :loading="isSubmitting"
+            :disabled="!canSubmit || isSubmitting"
+            :style="'background:' + (canSubmit ? themeColor : '#E0E0E0') + ';color:' + (canSubmit ? '#fff' : '#999') + ';box-shadow:' + (canSubmit ? '0 10rpx 20rpx var(--theme-shadow)' : 'none')"
+        >
+          确认{{ $noun('withdraw.transfer_action') }}
+        </button>
+        <view class="safe-tip">
+          <tui-icon name="shield" :size="14" color="#999"></tui-icon>
+          <text>资金安全保障中，转账前请核对信息</text>
+        </view>
+      </view>
+
+      </block>
+      </view>
+
+      <view class="pwd-mask" v-if="showPasswordModal" @touchmove.stop.prevent>
+        <view class="pwd-modal fade-in">
+          <view class="modal-title">请输入支付密码</view>
+          <view class="modal-content">
+            <input class="pwd-input" type="number" password="true" maxlength="6" focus="true"
+                   placeholder="请输入6位数字密码" v-model="payPassword"/>
+          </view>
+          <view class="modal-btns">
+            <view class="btn cancel" @click="closePasswordModal">取消</view>
+            <view class="btn confirm" :style="'color:' + themeColor" @click="confirmPasswordPay">确定</view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </tui-page>
+</template>
+
+<script>
+import {mapState} from 'vuex';
+import assetHero from './components/asset-hero.vue';
+import featureClosed from './components/feature-closed.vue';
+
+export default {
+  components: { assetHero, featureClosed },
+  data() {
+    return {
+        closed: false, // 后台没开这个功能:页面内提示,不再弹窗后自动返回
+      user: null,
+      target_id: '',
+      target: null,
+      money: '',
+      isSearching: false,
+      isSubmitting: false,
+      showPasswordModal: false,
+      payPassword: '',
+      requirePassword: false, // 是否需支付密码（提现插件 transfer/config）
+    }
+  },
+  computed: {
+    ...mapState('mall', {
+      themeColor: state => state.themeColor || '#E43D3D'
+    }),
+    canSubmit() {
+      return this.target && this.money && parseFloat(this.money) > 0;
+    }
+  },
+  onLoad() {
+    this.getInfo();
+    this.loadConfig();
+    uni.setNavigationBarTitle({
+      title: this.$noun('withdraw.balance_transfer_title')
+    })
+  },
+  methods: {
+    getInfo() {
+      this.$request({url: "/api/user/index"}).then(res => {
+        if (res.code == 0) this.user = res.data.user;
+      })
+    },
+
+    // 转赠配置：是否需支付密码 + 开关（关闭则拦截并返回）
+    loadConfig() {
+      this.$request({url: "/plugin/withdraw/api/transfer/config", method: "get"}).then(res => {
+        if (res.code === 0) {
+          this.requirePassword = res.data.is_transfer_password == 1;
+          if (res.data.balance_transfer_enabled != 1) {
+            this.closed = true;
+          }
+        }
+      })
+    },
+
+    getTargetInfo() {
+      if (!this.target_id || this.isSearching) return;
+      this.isSearching = true;
+      this.$request({
+        url: "/api/user/target-info",
+        data: {target_id: this.target_id}
+      }).then(res => {
+        if (res.code == 0) {
+          this.target = res.data.user;
+        } else {
+          uni.showToast({title: res.msg, icon: 'none'});
+        }
+      }).finally(() => {
+        this.isSearching = false;
+      });
+    },
+
+    handleSubmit() {
+      if (!this.canSubmit) return;
+
+      const amount = parseFloat(this.money);
+      if (amount > parseFloat(this.user.money)) {
+        return uni.showToast({title: this.$noun('balance') + '不足', icon: 'none'});
+      }
+
+      uni.showModal({
+        title: '安全确认',
+        content: `您确定要向用户“${this.target.nickname}”\n${this.$noun('withdraw.transfer_action')} ${this.money} 元吗？`,
+        confirmColor: this.themeColor,
+        success: (res) => {
+          if (res.confirm) {
+            if (this.requirePassword) {
+              this.payPassword = '';
+              this.showPasswordModal = true;
+            } else {
+              this.submitTransfer();
+            }
+          }
+        }
+      });
+    },
+
+    closePasswordModal() {
+      this.showPasswordModal = false;
+      this.payPassword = '';
+    },
+
+    confirmPasswordPay() {
+      if (!this.payPassword || this.payPassword.length !== 6) {
+        return uni.showToast({title: '请输入6位支付密码', icon: 'none'});
+      }
+      this.submitTransfer(this.payPassword);
+      this.closePasswordModal();
+    },
+
+    submitTransfer(pay_password = '') {
+      this.isSubmitting = true;
+      this.$request({
+        url: "/plugin/withdraw/api/transfer/balance",
+        data: {
+          money: this.money,
+          target_id: this.target.id,
+          pay_password: pay_password
+        },
+        method: 'post'
+      }).then(res => {
+        uni.showToast({title: res.msg, icon: res.code == 0 ? 'success' : 'none'});
+        if (res.code == 0) {
+          this.getInfo();
+          this.changeTarget();
+          this.money = '';
+        }
+      }).finally(() => {
+        this.isSubmitting = false;
+      });
+    },
+
+    changeTarget() {
+      this.target = null;
+      this.target_id = '';
+      this.money = '';
+    },
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+$bg-color: #F7F8FA;
+$text-main: #333;
+$text-sub: #999;
+
+page {
+  background-color: $bg-color;
+}
+
+.container {
+  padding: 0 30rpx 30rpx;
+}
+
+/* 2. 表单卡片容器 */
+.form-card {
+  position: relative;
+  z-index: 2;
+  margin-top: -30rpx;
+  background-color: #fff;
+  border-radius: 24rpx;
+  padding: 40rpx 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.02);
+
+  .section-title {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: $text-main;
+    margin-bottom: 24rpx;
+
+    &.mt-40 {
+      margin-top: 40rpx;
+    }
+  }
+}
+
+/* A. 搜索框样式 */
+.search-box {
+  display: flex;
+  align-items: center;
+
+  .input-wrapper {
+    flex: 1;
+    background-color: #F5F7FA;
+    height: 88rpx;
+    border-radius: 12rpx;
+    display: flex;
+    align-items: center;
+    padding: 0 24rpx;
+    margin-right: 20rpx;
+
+    .search-input {
+      flex: 1;
+      font-size: 28rpx;
+      color: $text-main;
+      margin-left: 16rpx;
+    }
+
+    .ph-color {
+      color: #BBB;
+    }
+  }
+
+  .search-btn {
+    width: 140rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 28rpx;
+    text-align: center;
+    border-radius: 12rpx;
+    transition: all 0.3s;
+
+    &:active {
+      opacity: 0.9;
+    }
+  }
+}
+
+/* 用户结果卡片 */
+.user-result-card {
+  display: flex;
+  align-items: center;
+  border: 2rpx solid var(--theme-color-bg);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  position: relative;
+  background: var(--theme-color-bg);
+
+  .avatar {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    margin-right: 24rpx;
+    border: 4rpx solid #fff;
+  }
+
+  .info {
+    flex: 1;
+
+    .nickname {
+      font-size: 30rpx;
+      font-weight: bold;
+      color: $text-main;
+      margin-bottom: 6rpx;
+    }
+
+    .uid {
+      font-size: 24rpx;
+      color: #666;
+    }
+  }
+
+  .close-icon {
+    padding: 10rpx;
+  }
+}
+
+/* B. 金额输入样式 */
+.amount-box {
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #EEE;
+  padding-bottom: 20rpx;
+  transition: border-color 0.3s;
+
+  &.disabled {
+    opacity: 0.5;
+  }
+
+  .symbol {
+    font-size: 40rpx;
+    font-weight: bold;
+    color: $text-main;
+    margin-right: 20rpx;
+  }
+
+  .amount-input {
+    flex: 1;
+    height: 80rpx;
+    font-size: 56rpx;
+    font-weight: bold;
+    color: $text-main;
+  }
+
+  .amount-ph {
+    font-size: 40rpx;
+    color: #DDD;
+    font-weight: normal;
+  }
+}
+
+.balance-tip {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 20rpx;
+
+  .all-btn {
+    font-weight: 500;
+  }
+}
+
+/* 3. 底部按钮区 */
+.footer-action {
+  margin-top: 60rpx;
+
+  .submit-btn {
+    font-size: 32rpx;
+    font-weight: bold;
+    height: 96rpx;
+    line-height: 96rpx;
+    border-radius: 48rpx;
+    transition: all 0.3s;
+
+    &::after {
+      border: none;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  .safe-tip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30rpx;
+
+    text {
+      font-size: 24rpx;
+      color: #999;
+      margin-left: 8rpx;
+    }
+  }
+}
+
+/* 支付密码弹窗 */
+.pwd-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .pwd-modal {
+    width: 600rpx;
+    background: #fff;
+    border-radius: 24rpx;
+    overflow: hidden;
+
+    .modal-title {
+      text-align: center;
+      font-size: 32rpx;
+      font-weight: bold;
+      padding: 40rpx 0 20rpx;
+      color: #333;
+    }
+
+    .modal-content {
+      padding: 30rpx 40rpx 50rpx;
+
+      .pwd-input {
+        background: #F5F7FA;
+        height: 90rpx;
+        border-radius: 12rpx;
+        text-align: center;
+        font-size: 36rpx;
+        letter-spacing: 20rpx;
+      }
+    }
+
+    .modal-btns {
+      display: flex;
+      border-top: 1rpx solid #EEE;
+
+      .btn {
+        flex: 1;
+        height: 100rpx;
+        line-height: 100rpx;
+        text-align: center;
+        font-size: 32rpx;
+
+        &.cancel {
+          color: #999;
+          border-right: 1rpx solid #EEE;
+        }
+
+        &.confirm {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+</style>

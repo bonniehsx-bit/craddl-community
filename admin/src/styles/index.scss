@@ -1,0 +1,274 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './btn.scss';
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+/* 卡片标题栏:标题靠左、操作按钮靠右,同一行垂直居中。
+   替代 float:right —— 按钮比标题文字高,浮动时顶对齐,看着比标题低一截,还会压出标题栏下边线。
+   顺手屏蔽 clearfix 的 ::before/::after,否则在 flex 里会变成两个占位项把两端往中间挤。 */
+.card-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &::before,
+  &::after {
+    display: none !important;
+  }
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+aside {
+  background: #eef1f6;
+  padding: 8px 24px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  display: block;
+  line-height: 32px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #2c3e50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  a {
+    color: var(--admin-accent-text);
+    cursor: pointer;
+
+    &:hover {
+      color: rgba(var(--admin-accent-rgb), 1);
+    }
+  }
+}
+
+//main-container全局样式
+.app-container {
+  padding: 20px;
+}
+
+.components-container {
+  margin: 30px 50px;
+  position: relative;
+}
+
+.pagination-container {
+  margin-top: 30px;
+}
+
+.text-center {
+  text-align: center
+}
+
+.sub-navbar {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  transition: 600ms ease position;
+  background: linear-gradient(135deg, var(--admin-primary), var(--admin-primary-hover));
+
+  .subtitle {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &.draft {
+    background: #d0d0d0;
+  }
+
+  &.deleted {
+    background: #d0d0d0;
+  }
+}
+
+.link-type,
+.link-type:focus {
+  color: var(--admin-accent-text);
+  cursor: pointer;
+
+  &:hover {
+    color: rgba(var(--admin-accent-rgb), 1);
+  }
+}
+
+.filter-container {
+  padding-bottom: 10px;
+
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+  line-height: 16px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
+}
+
+/* ================================================================
+   全局字号跟随布局尺寸（SizeSelect 联动）
+   通过 CSS 变量控制，所有页面自动继承
+   ================================================================ */
+.app-size-default {
+  --app-font-size: 15px;
+  --app-font-size-sm: 13px;
+  --app-font-size-xs: 12px;
+  --tags-view-height: 40px;
+  --tags-item-height: 32px;
+  --tags-item-padding: 0 10px;
+}
+.app-size-medium {
+  --app-font-size: 14px;
+  --app-font-size-sm: 12px;
+  --app-font-size-xs: 11px;
+  --tags-view-height: 38px;
+  --tags-item-height: 30px;
+  --tags-item-padding: 0 9px;
+}
+.app-size-small {
+  --app-font-size: 13px;
+  --app-font-size-sm: 12px;
+  --app-font-size-xs: 11px;
+  --tags-view-height: 34px;
+  --tags-item-height: 26px;
+  --tags-item-padding: 0 8px;
+}
+.app-size-mini {
+  --app-font-size: 12px;
+  --app-font-size-sm: 11px;
+  --app-font-size-xs: 10px;
+  --tags-view-height: 30px;
+  --tags-item-height: 22px;
+  --tags-item-padding: 0 6px;
+}
+
+/* 全局继承 */
+.app-wrapper {
+  font-size: var(--app-font-size, 14px);
+}
+
+/* Element UI 组件字号覆盖 */
+.app-wrapper .main-container {
+  .el-card__header,
+  .el-dialog__title,
+  .el-tabs__item { font-size: var(--app-font-size, 14px); }
+
+  .el-table,
+  .el-table th,
+  .el-table td,
+  .el-form-item__label,
+  .el-input__inner,
+  .el-textarea__inner,
+  .el-select-dropdown__item,
+  .el-dropdown-menu__item,
+  .el-descriptions__label,
+  .el-descriptions__content,
+  .el-tag { font-size: var(--app-font-size-sm, 13px); }
+
+  .el-pagination,
+  .el-breadcrumb,
+  .text-muted,
+  .form-tip,
+  .tip { font-size: var(--app-font-size-xs, 12px); }
+}

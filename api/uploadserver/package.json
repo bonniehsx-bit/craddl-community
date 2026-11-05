@@ -1,0 +1,12 @@
+{
+  "name": "upload_server",
+  "version": "2.0.0",
+  "description": "微信小程序代码上传：仅作为 miniprogram-ci CLI 的安装载体，由 PHP 端 exec 调用，无需常驻服务",
+  "private": true,
+  "dependencies": {
+    "miniprogram-ci": "^1.9.11"
+  },
+  "overrides": {
+    "less": "3.13.1"
+  }
+}
