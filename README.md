@@ -2,7 +2,9 @@
 
 Craddl 社区版是一套可自部署的开源多商户商城，包含平台后台、商家后台、移动商城和任务调度器。平台可管理商品、订单及入驻商户，并通过社区应用开展优惠券营销、分销、核销和提现业务。
 
-[安装部署与手动升级](INSTALL.md) · [问题反馈](https://github.com/bonniehsx-bit/craddl-community/issues) · [官网](https://www.craddl.cn/)
+[下载发行版](https://github.com/bonniehsx-bit/craddl-community/releases) · [安装部署](INSTALL.md) · [变更日志](CHANGELOG.md) · [参与贡献](CONTRIBUTING.md) · [安全报告](SECURITY.md) · [官网](https://www.craddl.cn/)
+
+![Craddl 社区版平台后台登录页](docs/screenshots/admin-login.jpg)
 
 ## 平台后台
 
