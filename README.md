@@ -1,5 +1,7 @@
 # Craddl 社区版
 
+**项目发起人 · Jimmy G**
+
 Craddl 社区版是一套可自部署的开源多商户商城，包含平台后台、商家后台、移动商城和任务调度器。平台可管理商品、订单及入驻商户，并通过社区应用开展优惠券营销、分销、核销和提现业务。
 
 [下载发行版](https://github.com/bonniehsx-bit/craddl-community/releases) · [安装部署](INSTALL.md) · [变更日志](CHANGELOG.md) · [参与贡献](CONTRIBUTING.md) · [安全报告](SECURITY.md) · [官网](https://www.craddl.cn/)
@@ -40,4 +42,4 @@ H5 演示首页展示商品、领券入口、内容入口和购物车导航。
 
 ## 许可证
 
-项目发起人 **Jimmy G**。佛山今日鼎盛信息科技有限公司以 [CPAL-1.0](LICENSE) 授权本社区版中有权许可的 Craddl 自有代码。界面署名和源码提供义务见 [源码许可说明](api/SOURCE-LICENSE.md)。第三方组件和资源保留各自的许可与署名，详见 [第三方许可声明](THIRD-PARTY-NOTICES.md)。
+佛山今日鼎盛信息科技有限公司以 [CPAL-1.0](LICENSE) 授权本社区版中有权许可的 Craddl 自有代码。界面署名和源码提供义务见 [源码许可说明](api/SOURCE-LICENSE.md)。第三方组件和资源保留各自的许可与署名，详见 [第三方许可声明](THIRD-PARTY-NOTICES.md)。
