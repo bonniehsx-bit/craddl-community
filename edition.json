@@ -13,7 +13,7 @@
     "mch",
     "withdraw"
   ],
-  "rules_sha256": "596f8373edb589fc9168cd8ece70965709cfe89c8eed6d4dc076622989c121ca",
+  "rules_sha256": "10947a1e4831cb3e71d89e3f2fc4bf24cdaeba38e154413cf722e991548bfde8",
   "scheduler": null,
   "source_commit": "b214dc61dbe798e6c31ee5a0fb796f6f461bff63",
   "status": "local-candidate"
